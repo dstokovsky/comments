@@ -1,0 +1,80 @@
+<?php
+
+namespace Blogger\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Log
+ *
+ * @ORM\Table(name="log")
+ * @ORM\Entity
+ */
+class Log
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ip", type="bigint", nullable=false)
+     */
+    private $ip;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_system_info", type="string", length=255, nullable=false)
+     */
+    private $userSystemInfo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="action", type="boolean", nullable=false)
+     */
+    private $action;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Blogger\BlogBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Blogger\BlogBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Blogger\BlogBundle\Entity\Post
+     *
+     * @ORM\ManyToOne(targetEntity="Blogger\BlogBundle\Entity\Post")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * })
+     */
+    private $post;
+
+
+}

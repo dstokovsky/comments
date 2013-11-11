@@ -1,0 +1,7 @@
+blog_homepage:
+    pattern:  /
+    defaults: { _controller: BlogBundle:Post:index }
+    
+blog_add_posts:
+    pattern: /posts/add
+    defaults: { _controller: BlogBundle:Post:add }

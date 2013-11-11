@@ -1,0 +1,55 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block body %}
+    <ul class="comments-list">
+    {% if posts %}
+        {% for post in posts %}
+            {% include "BlogBundle:Post:comment-item.html.twig" with { "post": post } %}
+        {%endfor%}
+    {% else %}
+        <li class="empty">No comments yet</li>
+    {% endif %}
+    </ul>
+    <div class="comment-form">
+        <div class="form-errors"></div>
+        {{ form_start(form) }}
+        <div class="row-wrapper">
+            <div class="labels">
+                {{ form_label( form.username ) }}:
+            </div>
+            <div class="inputs">
+                {{ form_widget( form.username ) }}
+            </div>
+        </div>
+
+        <div class="row-wrapper">
+            <div class="labels">
+                {{ form_label( form.useremail ) }}:
+            </div>
+            <div class="inputs">
+                {{ form_widget( form.useremail ) }}
+            </div>
+        </div>
+
+        <div class="row-wrapper">
+            <div class="labels">
+                {{ form_label( form.message ) }}:
+            </div>
+            <div class="inputs">
+                {{ form_widget( form.message ) }}
+                <em>You have <span id="counter"></span> characters left.</em>
+            </div>
+        </div>
+
+        <div class="row-wrapper">
+            <div class="labels">
+                &nbsp;
+            </div>
+            <div class="inputs">
+                {{ form_widget( form.recaptcha ) }}
+            </div>
+        </div>
+
+        {{ form_rest( form ) }}
+    </div>
+{% endblock %}

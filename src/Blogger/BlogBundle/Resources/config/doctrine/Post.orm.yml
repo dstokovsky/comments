@@ -1,0 +1,32 @@
+Blogger\BlogBundle\Entity\Post:
+    type: entity
+    table: post
+    fields:
+        id:
+            id: true
+            type: bigint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        username:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        useremail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        message:
+            type: text
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    lifecycleCallbacks: {  }
